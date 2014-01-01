@@ -22,4 +22,5 @@ return array(
           'user'     => 'dev',
           'password' => 'dev',
           'dbname'   => 'zf2d2',
+		  'unix_socket' => '/usr/local/zend/mysql/tmp/mysql.sock'
 )))));
