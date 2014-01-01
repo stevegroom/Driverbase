@@ -1,6 +1,10 @@
 <?php
 // Needed for Zend Developer Tools
 define('REQUEST_MICROTIME', microtime(true));
+
+
+date_default_timezone_set('UTC');
+
 /**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
