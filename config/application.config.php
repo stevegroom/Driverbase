@@ -6,6 +6,11 @@ return array(
 		'DoctrineORMModule',
         'Application',
     	'ZendDeveloperTools',
+		'ZfcBase',
+		'ZfcUser',
+		'ZfcUserDoctrineORM',
+		'BjyAuthorize',
+
     ),
 
     // These are various options for the listeners attached to the ModuleManager
