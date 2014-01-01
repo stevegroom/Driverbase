@@ -1,0 +1,39 @@
+<div>
+    <div>
+        <div>
+            <div>
+                <h3>Circuits</h3>
+            </div>
+            <div>
+                <a href="<?php echo $this->url('driverbase', array('action'=>'addCircuit'));?>">Add Circuit</a>
+
+                <?php if (isset($circuits)) : ?>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                <?php foreach($circuits as $circuit): ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $circuit->getId(); ?></td>
+                        <td><?php echo $circuit->getName(); ?></td>
+                        <td><?php echo $circuit->getCountryId(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'displayCircuit', 'id' => $circuit->getId()));?>">Display</a> |
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'editCircuit', 'id' => $circuit->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'deleteCircuit', 'id' => $circuit->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<orm-designer version="2.2.8.792" name="Driverbase" mvc="Zend Framework" orm="Doctrine2" uuid="5da47441-8df4-4b94-838d-16e5bd0f8df7">
+  <external-module storage-path="Driverbase/src/Driverbase/Entity/Entity.module.xml"/>
+  <visual-data>
+    <entity uuid="0753fd3e-71dc-4328-a3e1-f0c5a83db139" position-x="259" position-y="153" size-x="0" size-x2="101" size-y="0" size-y2="59"/>
+    <entity uuid="17f24164-a42a-4101-9bfa-4eb3e0e54044" position-x="526" position-y="384" size-x="0" size-x2="90" size-y="0" size-y2="45"/>
+    <entity uuid="1a06e012-5396-4422-84b0-c48d52ea9bed" position-x="602" position-y="272" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
+    <entity uuid="20a76663-75a2-4a80-b8b9-183092a03898" position-x="308" position-y="38" size-x="0" size-x2="127" size-y="0" size-y2="87"/>
+    <module uuid="3242a945-9ad9-4850-8f4d-da88d5da13b3" bk-color="4294835960" position-x="50" position-y="50" size-x="0" size-x2="741" size-y="0" size-y2="457"/>
+    <entity uuid="406fe5f3-5286-4e2f-ae39-78038209bb17" position-x="458" position-y="109" size-x="0" size-x2="111" size-y="0" size-y2="73"/>
+    <entity uuid="52b370f5-7acc-40e3-8e32-4fea7ab73820" position-x="262" position-y="246" size-x="0" size-x2="94" size-y="0" size-y2="129"/>
+    <project uuid="5da47441-8df4-4b94-838d-16e5bd0f8df7" size-x="0" size-x2="825" size-y="0" size-y2="557"/>
+    <entity uuid="88bf1163-0c15-49ff-ba61-999a7ed71a3f" position-x="33" position-y="197" size-x="0" size-x2="127" size-y="0" size-y2="115"/>
+    <entity uuid="9f6db4f3-aeed-4458-ab9f-9f4644873f6c" position-x="30" position-y="44" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
+    <entity uuid="e4662993-f329-4b1c-b50e-09fbd421703a" position-x="325" position-y="373" size-x="0" size-x2="94" size-y="0" size-y2="60"/>
+  </visual-data>
+</orm-designer>

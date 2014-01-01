@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <div>
+            <div>
+                <h3>Team</h3>
+            </div>
+            <div>
+                <a href="<?php echo $this->url('driverbase', array('action'=>'addTeam'));?>">Add Team</a>
+
+                <?php if (isset($teams)) : ?>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                <?php foreach($teams as $team): ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $team->getId(); ?></td>
+                        <td><?php echo $team->getName(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'displayTeam', 'id' => $team->getId()));?>">Display</a> |
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'editTeam', 'id' => $team->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('driverbase', array('action'=>'deleteTeam', 'id' => $team->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

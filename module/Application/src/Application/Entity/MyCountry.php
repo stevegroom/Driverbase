@@ -1,5 +1,5 @@
 <?php
-namespace Driverbase\Entity;
+namespace Application\Entity;
 
 //use BjyAuthorize\Acl\HierarchicalRoleInterface;
 use Doctrine\ORM\Mapping as ORM;

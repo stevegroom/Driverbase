@@ -1,0 +1,12 @@
+<?php
+$title = 'Driver';
+$this->headTitle($title);
+?>
+<ul>
+<li><a href="<?php echo $this->url('driverbase', array('action'=>'listDrivers'));?>">Drivers</a></li>
+</ul>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>fullname: <?php echo $driver->getFullname(); ?><br/>
+Date of birth: <?php echo $driver->getDoB(); ?><br/>
+Date of death: <?php echo $driver->getDoD(); ?><br/>
+</p>
