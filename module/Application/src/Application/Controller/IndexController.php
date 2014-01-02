@@ -27,6 +27,17 @@ class IndexController extends AbstractActionController
     	$builder    = new AnnotationBuilder();
     	$form       = $builder->createForm($student);
 
+    	$script = $this->getServiceLocator()->get('viewhelpermanager')
+    	->get('inlineScript');
+
+    	$script->appendScript('
+    	var $j = jQuery.noConflict();
+    	$j(".jqdate").css( "border", "3px solid red" )
+		$j(".jqdate").datepicker();',
+                'text/javascript',
+                array('noescape' => true));
+
+
     	$request = $this->getRequest();
     	if ($request->isPost()){
     		$form->bind($student);

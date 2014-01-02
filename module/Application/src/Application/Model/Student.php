@@ -46,6 +46,7 @@ class Student
 	 * @Annotation\Required({"required":"true" })
 	 * @Annotation\Filter({"name":"StripTags"})
 	 * @Annotation\Options({"label":"Date:"})
+	 * @Annotation\Attributes({"class":"jqdate"})
 	 */
 	public $date;
 
