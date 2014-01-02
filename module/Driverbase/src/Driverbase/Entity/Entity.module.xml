@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<orm-designer version="2.2.8.792" mvc="Zend Framework" orm="Doctrine2">
+  <module name="Entity" import-format="Doctrine2Php" import-path="." uuid="3242a945-9ad9-4850-8f4d-da88d5da13b3">
+    <entity name="Driver" uuid="17f24164-a42a-4101-9bfa-4eb3e0e54044">
+      <field name="id" type="integer" required="true" primary="true" uuid="e300dda5-d603-478d-a6d6-95a728035f4e">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="fullName" type="string" uuid="1d409b73-46f8-4fe2-88f6-b8bb4a7a3cb9"/>
+      <field name="DoB" type="date" uuid="682c5132-1df0-4f02-9ea4-7021f14eb31b"/>
+      <field name="DoD" type="date" uuid="35b8721e-420c-4eb6-b085-4357d8350bcc"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Driver.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="Team" uuid="1a06e012-5396-4422-84b0-c48d52ea9bed">
+      <field name="id" type="integer" required="true" primary="true" uuid="ad35d830-0d94-44d7-b9d8-8c79c68e031d">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="a3b50675-0bac-4e0f-8725-b5a494287ae3"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Team.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="Country" uuid="406fe5f3-5286-4e2f-ae39-78038209bb17">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="e5cb276d-c115-4010-9939-f92f8d9ffcca"/>
+      <field name="code" type="string" size="3" unique="true" uuid="795d9d42-1ecd-41fd-95f5-54d5444d6c3f"/>
+      <field name="name" type="string" size="50" unique="true" uuid="86b30143-ac9e-462e-99d3-38f055dc231f"/>
+      <field name="nationality" type="string" size="30" uuid="f55566d7-1e5a-4fce-b75f-fb393827f769"/>
+    </entity>
+    <entity name="Circuit" uuid="0753fd3e-71dc-4328-a3e1-f0c5a83db139">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="b8ffa4b1-56e1-4a46-9018-bd6acb6049f9"/>
+      <field name="name" type="string" size="60" uuid="e81c3471-015d-4a1b-b034-2f7c2fb31a94"/>
+      <field name="country_id" type="integer" required="true" uuid="709f6f37-6700-4925-8ef8-71c0105dbcc2"/>
+    </entity>
+    <association from="Circuit" to="Country" caption="Country Circuit" owner-alias="circuit" inverse-alias="country" uuid="cdac5cc5-be3a-4c73-8cb8-c3beb40e5a6a">
+      <association-field from="country_id" to="id"/>
+    </association>
+    <entity name="Championship" uuid="9f6db4f3-aeed-4458-ab9f-9f4644873f6c">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="fe0380d9-a634-4c67-9e4d-754224ba6f82"/>
+      <field name="name" type="string" size="50" uuid="eaab5fce-9a26-465e-b7e3-34867c3633df"/>
+      <field name="season" type="integer" uuid="4da761ae-da5a-40b8-b785-af352713da4b"/>
+      <field name="title" type="string" size="50" uuid="0b4155a0-8a5e-45f7-bdc7-f95fe03aa97c"/>
+    </entity>
+    <entity name="Event" uuid="88bf1163-0c15-49ff-ba61-999a7ed71a3f">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="73d1e9ee-567c-4cbc-840e-a5e5aae0a0bb"/>
+      <field name="startDate" type="date" uuid="3214c7f7-9ba6-4c80-89af-24d8a104fd9f"/>
+      <field name="endDate" type="date" uuid="8277e3f2-810a-4a3d-9ed6-76186e341a32"/>
+      <field name="number" type="integer" uuid="b20ed673-c671-4ca0-b577-dbb28a82d81f"/>
+      <field name="circuit_id" type="integer" required="true" uuid="f9fda344-63b8-4657-b0df-da3c4ba48115"/>
+      <field name="championship_id" type="integer" required="true" uuid="9a9a45f6-7004-4f7d-b42c-d0a8e8070c99"/>
+      <field name="confirmed" type="boolean" default="true" required="true" uuid="46c7d608-88b3-42bb-bdf1-9943d4bff1cd"/>
+    </entity>
+    <association from="Event" to="Circuit" caption="Circuit Event" owner-alias="event" inverse-alias="circuit" uuid="00a54c9b-9e34-4c07-928d-433672d7422a">
+      <association-field from="circuit_id" to="id"/>
+    </association>
+    <association from="Event" to="Championship" caption="Championship Event" owner-alias="event" inverse-alias="championship" uuid="7460bf50-acd8-4fdb-a287-359927b5ecdd">
+      <association-field from="championship_id" to="id"/>
+    </association>
+    <entity name="Entry" uuid="52b370f5-7acc-40e3-8e32-4fea7ab73820">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="6583f2cd-347c-4e6f-8a22-239de95ad440"/>
+      <field name="event_id" type="integer" required="true" uuid="3871407a-7262-49ab-9474-87ac01388fed"/>
+      <field name="car" uuid="b5ef049d-f46e-4768-a15a-3e13ce3c1829"/>
+      <field name="team_id" type="integer" required="true" uuid="bb7ea98c-b73e-4ad8-837d-057476b4201e"/>
+    </entity>
+    <association from="Entry" to="Event" caption="Event Entry" owner-alias="entry" inverse-alias="event" uuid="1fec4bd1-a398-42fc-a133-134fff39e1cb">
+      <association-field from="event_id" to="id"/>
+    </association>
+    <association from="Entry" to="Team" caption="Team Entry" owner-alias="entry" inverse-alias="team" uuid="033bc70f-7b0b-4003-935a-8b1709bb2b6d">
+      <association-field from="team_id" to="id"/>
+    </association>
+    <entity name="EntryToDriver" uuid="e4662993-f329-4b1c-b50e-09fbd421703a">
+      <field name="entry_id" type="integer" required="true" primary="true" uuid="a0ac7664-ad31-4280-9d77-a1728e3df86d"/>
+      <field name="driver_id" type="integer" required="true" primary="true" uuid="03eb2431-c489-4803-ab7a-22eeb58865cb"/>
+    </entity>
+    <many-to-many mn-entity="EntryToDriver" caption="Entry to Driver" uuid="bdb30c5b-0905-4254-8733-f02be74ad7fb">
+      <many-to-many-entity name="Driver" owning-side="true" alias="driver" uuid="0aeb2ea6-c892-4877-a33e-9b0f76659ffc">
+        <many-to-many-field from="driver_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="Entry" owning-side="false" alias="entry" uuid="896f437a-4301-4832-8568-a196214509ad">
+        <many-to-many-field from="entry_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <entity name="Title" uuid="20a76663-75a2-4a80-b8b9-183092a03898">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="a375532a-75d7-44e3-8c7c-57da58d7b37f"/>
+      <field name="championship_id" type="integer" required="true" uuid="13cd85a0-e787-4797-bb8c-9bed083a1167"/>
+      <field name="name" type="string" size="60" uuid="5af5f4bd-9e2a-490b-b40c-6bef7c90f4d9"/>
+      <field name="type" description="team or driver" type="string" size="10" uuid="14c32c3c-809f-47a7-b591-81dd70de831d"/>
+      <field name="class" type="string" size="5" uuid="2397b81a-7ac9-4d29-84a4-2930de4bb065"/>
+    </entity>
+    <association from="Title" to="Championship" caption="Championship Title" owner-alias="title" inverse-alias="championship" uuid="7d5422b6-625c-4629-b572-b88337519292">
+      <association-field from="championship_id" to="id"/>
+    </association>
+  </module>
+  <visual-data>
+    <entity uuid="0753fd3e-71dc-4328-a3e1-f0c5a83db139" position-x="259" position-y="153" size-x="0" size-x2="101" size-y="0" size-y2="59"/>
+    <entity uuid="17f24164-a42a-4101-9bfa-4eb3e0e54044" position-x="526" position-y="384" size-x="0" size-x2="90" size-y="0" size-y2="45"/>
+    <entity uuid="1a06e012-5396-4422-84b0-c48d52ea9bed" position-x="602" position-y="272" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
+    <entity uuid="20a76663-75a2-4a80-b8b9-183092a03898" position-x="308" position-y="38" size-x="0" size-x2="127" size-y="0" size-y2="87"/>
+    <module uuid="3242a945-9ad9-4850-8f4d-da88d5da13b3" bk-color="4294835960" position-x="50" position-y="50" size-x="0" size-x2="741" size-y="0" size-y2="457"/>
+    <entity uuid="406fe5f3-5286-4e2f-ae39-78038209bb17" position-x="458" position-y="109" size-x="0" size-x2="111" size-y="0" size-y2="73"/>
+    <entity uuid="52b370f5-7acc-40e3-8e32-4fea7ab73820" position-x="262" position-y="246" size-x="0" size-x2="94" size-y="0" size-y2="129"/>
+    <entity uuid="88bf1163-0c15-49ff-ba61-999a7ed71a3f" position-x="33" position-y="197" size-x="0" size-x2="127" size-y="0" size-y2="115"/>
+    <entity uuid="9f6db4f3-aeed-4458-ab9f-9f4644873f6c" position-x="30" position-y="44" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
+    <entity uuid="e4662993-f329-4b1c-b50e-09fbd421703a" position-x="325" position-y="373" size-x="0" size-x2="94" size-y="0" size-y2="60"/>
+  </visual-data>
+</orm-designer>
