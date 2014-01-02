@@ -10,7 +10,7 @@
 return array(
 		'doctrine' => array(
 				'driver' => array(
-						'application_entities' => array(
+						'driverbase_entities' => array(
 								'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
 								'cache' => 'array',
 								'paths' => array(__DIR__ . '/../src/Driverbase/Entity')
@@ -18,7 +18,7 @@ return array(
 
 						'orm_default' => array(
 								'drivers' => array(
-										'Driverbase\Entity' => 'application_entities'
+										'Driverbase\Entity' => 'driverbase_entities'
 								)
 						))),
     'router' => array(
@@ -26,8 +26,8 @@ return array(
         		'driverbase' => array(
         				'type'    => 'segment',
         				'options' => array(
-        						'route'    => '/driverbase[/:action][/:id]',
-        						//						'route'    => '/driverbase[/:action[/:id]]',
+        						//'route'    => '/driverbase[/:action][/:id]',
+        						'route'    => '/driverbase[/:action[/:id]]',
         						'constraints' => array(
         								'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
         								'id'     => '[0-9]+',
