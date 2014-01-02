@@ -10,3 +10,13 @@ $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formCollection($form);
 echo $this->form()->closeTag();
+
+$this->inlineScript()->offsetSetScript(99,"
+$(function() {
+   $('input#start').datepicker({
+       dateFormat: 'yy-mm-dd',
+       showOtherMonths: true,
+       selectOtherMonths: true,
+   });
+});
+");

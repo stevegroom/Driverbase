@@ -42,6 +42,14 @@ class Student
 	public $gender;
 
 	/**
+	 * @Annotation\Type("Zend\Form\Element\Date")
+	 * @Annotation\Required({"required":"true" })
+	 * @Annotation\Filter({"name":"StripTags"})
+	 * @Annotation\Options({"label":"Date:"})
+	 */
+	public $date;
+
+	/**
 	 * @Annotation\Type("Zend\Form\Element\Select")
 	 * @Annotation\Required({"required":"true" })
 	 * @Annotation\Filter({"name":"StripTags"})
