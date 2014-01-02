@@ -1,0 +1,12 @@
+<?php
+
+$title = 'Edit Driver';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<form method="post">
+  fullname: <input type="text" name="fullname" value="<?php echo $driver->getFullname(); ?>"><br>
+  DoB: <input type="text" name="DoB" value="<?php echo $driver->getDoB(); ?>"><br>
+  DoB: <input type="text" name="DoD" value="<?php echo $driver->getDoD(); ?>"><br>
+  <input type="submit" value="Submit">
+</form>
