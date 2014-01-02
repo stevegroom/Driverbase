@@ -10,6 +10,8 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Form\Annotation\AnnotationBuilder;
+use Application\Model\Student;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
@@ -18,4 +20,23 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function addAction()
+    {
+    	$student    = new Student();
+    	$builder    = new AnnotationBuilder();
+    	$form       = $builder->createForm($student);
+
+    	$request = $this->getRequest();
+    	if ($request->isPost()){
+    		$form->bind($student);
+    		$form->setData($request->getPost());
+    		if ($form->isValid()){
+    			print_r($form->getData());
+    		}
+    	}
+
+    	return array('form'=>$form);
+    }
+
 }

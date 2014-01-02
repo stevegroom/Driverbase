@@ -15,6 +15,8 @@ use Driverbase\Entity\Circuit;
 use Driverbase\Entity\Country;
 use Driverbase\Entity\Driver;
 use Driverbase\Entity\Team;
+//use Driverbase\Model\Driver as DriverModel;
+use Driverbase\Form\DriverForm;
 
 
 class IndexController extends AbstractActionController
@@ -158,6 +160,46 @@ class IndexController extends AbstractActionController
 
 
     public function editDriverAction()
+    {
+    	$form = new \Driverbase\Form\DriverForm();
+    	$form->get('submit')->setValue('Save');
+
+    	$request = $this->getRequest();
+
+		$id = (int) $this->params()->fromRoute('id', 0);
+		$driver = $this->getObjectManager()->find('\Driverbase\Entity\Driver', $id);
+
+    	if ($request->isPost()) {
+    		$driver->setFullName($this->getRequest()->getPost('fullname'));
+    		$driver->setDoB($this->getRequest()->getPost('DoB'));
+    		$driver->setDoD($this->getRequest()->getPost('DoD'));
+
+    		$this->getObjectManager()->persist($driver);
+    		$this->getObjectManager()->flush();
+
+    		$form->setInputFilter($driver->getInputFilter());
+    		$form->setData($request->getPost());
+
+    		if ($form->isValid()) {
+    			$driver->exchangeArray($driver->getData());
+    			$this->getObjectManager()->persist($driver);
+    			$this->getObjectManager()->flush();
+
+
+           $this->flashMessenger()->addMessage('Driver with id:' . $id . " updated");
+
+    		return $this->redirect()->toRoute('driverbase', array(
+    				'controller' => 'index',
+    				'action' =>  'listDrivers'
+    		));
+    		}
+    	}
+//    	return array('form' => $form);
+
+        return new ViewModel(array('driver' => $driver));
+    }
+
+    public function editDriverActionxxx()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         $driver = $this->getObjectManager()->find('\Driverbase\Entity\Driver', $id);
